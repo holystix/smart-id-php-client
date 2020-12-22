@@ -65,6 +65,8 @@ class Client
      */
   private $sslKeys;
 
+  private $curlParameters = [];
+
   /**
    * @param string $apiName
    * @throws InvalidArgumentException
@@ -184,5 +186,17 @@ class Client
           $this->sslKeys = self::DEMO_SID_PUBLIC_KEY.";".self::DEMO_SID_PUBLIC_KEY_VALID_FROM_2020_09_30_TO_2021_10_13.";".self::RP_API_PUBLIC_KEY_VALID_FROM_2016_12_20_TO_2020_01_19.";".self::RP_API_PUBLIC_KEY_VALID_FROM_2019_11_01_TO_2021_11_05;
       }
       return $this->sslKeys;
+  }
+
+  public function setCurlParameters($array = [])
+  {
+      $this->curlParameters = $array;
+
+      return $this;
+  }
+
+  public function getCurlParameters()
+  {
+      return $this->curlParameters;
   }
 }

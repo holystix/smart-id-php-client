@@ -48,6 +48,7 @@ class Authentication extends AbstractApi
   public function createAuthentication()
   {
     $connector = new SmartIdRestConnector( $this->client->getHostUrl() );
+    $connector->setCurlParameters($this->client->getCurlParameters());
     $connector->setPublicSslKeys($this->client->getPublicSslKeys());
     $sessionStatusPoller = $this->createSessionStatusPoller( $connector );
     $builder = new AuthenticationRequestBuilder( $connector, $sessionStatusPoller );
@@ -62,6 +63,7 @@ class Authentication extends AbstractApi
   public function createSessionStatusFetcher()
   {
     $connector = new SmartIdRestConnector( $this->client->getHostUrl() );
+    $connector->setCurlParameters($this->client->getCurlParameters());
     $connector->setPublicSslKeys($this->client->getPublicSslKeys());
     $builder = new SessionStatusFetcherBuilder( $connector );
     return $builder->withSessionStatusResponseSocketTimeoutMs( $this->sessionStatusResponseSocketTimeoutMs );
