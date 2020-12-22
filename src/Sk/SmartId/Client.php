@@ -188,6 +188,13 @@ class Client
       return $this->sslKeys;
   }
 
+  public function setCurlParameter($key, $value)
+  {
+      $this->curlParameters[$key] = $value;
+
+      return $this;
+  }
+
   public function setCurlParameters($array = [])
   {
       $this->curlParameters = $array;
